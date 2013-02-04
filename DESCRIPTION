@@ -1,7 +1,7 @@
 Package: downloader
 Maintainer: Winston Chang <winston@stdout.org>
 Author: Winston Chang <winston@stdout.org>
-Version: 0.1
+Version: 0.2
 License: GPL-2
 Title: A package for downloading files over https
 Description: This package provides a wrapper for the download.file
@@ -11,7 +11,9 @@ Description: This package provides a wrapper for the download.file
         difficult to install because it must be compiled with external
         dependencies. This package has no external dependencies, so it
         is much easier to install.
-Collate: 'downloader-package.r' 'download.r'
-Packaged: 2012-10-31 20:43:55 UTC; winston
+URL: https://github.com/wch/downloader
+Suggests: testthat
+Collate: 'download.r' 'downloader-package.r' 'source_url.r'
+Packaged: 2013-02-04 20:40:00 UTC; winston
 Repository: CRAN
-Date/Publication: 2012-11-01 14:49:51
+Date/Publication: 2013-02-04 22:08:09

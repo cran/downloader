@@ -31,27 +31,31 @@
 #' }
 #'
 download <- function(url, ...) {
-  # First, check protocol. If https, check platform:
-  if (grepl('^https://', url)) {
+  # First, check protocol. If http or https, check platform:
+  if (grepl('^https?://', url)) {
 
     # If Windows, call setInternet2, then use download.file with defaults.
     if (.Platform$OS.type == "windows") {
 
-      # Store initial settings, and restore on exit
-      internet2_start <- setInternet2(NA)
-      on.exit(setInternet2(internet2_start))
+      # If we directly use setInternet2, R CMD CHECK gives a Note on Mac/Linux
+      seti2 <- `::`(utils, 'setInternet2')
 
-      # Needed for https
-      setInternet2(TRUE)
+      # Store initial settings, and restore on exit
+      internet2_start <- seti2(NA)
+      on.exit(suppressWarnings(seti2(internet2_start)))
+
+      # Needed for https. Will get warning if setInternet2(FALSE) already run
+      # and internet routines are used. But the warnings don't seem to matter.
+      suppressWarnings(seti2(TRUE))
       download.file(url, ...)
 
     } else {
       # If non-Windows, check for curl/wget/lynx, then call download.file with
       # appropriate method.
 
-      if (system("wget --help", ignore.stdout=TRUE, ignore.stderr=TRUE) == 0L) {
+      if (nzchar(Sys.which("wget")[1])) {
         method <- "wget"
-      } else if (system("curl --help", ignore.stdout=TRUE, ignore.stderr=TRUE) == 0L) {
+      } else if (nzchar(Sys.which("curl")[1])) {
         method <- "curl"
 
         # curl needs to add a -L option to follow redirects.
@@ -61,7 +65,7 @@ download <- function(url, ...) {
 
         options(download.file.extra = paste("-L", orig_extra_options))
 
-      } else if (system("lynx -help", ignore.stdout=TRUE, ignore.stderr=TRUE) == 0L) {
+      } else if (nzchar(Sys.which("lynx")[1])) {
         method <- "lynx"
       } else {
         stop("no download method found")
