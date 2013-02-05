@@ -1,12 +1,12 @@
-bae8c995f3c9e09ee99032a2585f0d9b *DESCRIPTION
+a73c1e1f74419d22f51812c95fab041c *DESCRIPTION
 ca646ee2c59d855dc50808d525a07c5d *NAMESPACE
-544aba0d077404dae3b0134d7331bfc0 *NEWS
-62fb4dd7b96c7f69b65516de4a48dcd0 *R/download.r
+3034e60908114b2e17daa26aeb3d83bb *NEWS
+d4dc41f688c23edc6a3a2b75ca5c88b5 *R/download.r
 de21e78821c43a2c90f2cfb9fec2dc6d *R/downloader-package.r
 44b1cf19c33c43d84e2aba2712973571 *R/source_url.r
 6faf10fe18d73cd9b260a08156583f02 *README.md
-0948232ff7fd282d5d3c5e379daec3f8 *inst/tests/test-download.r
-d128cde8ca9528e3dbfcdcde560c3c4c *man/download.Rd
+8dddf72e9c7c14a04f90aaef9a647cdd *inst/tests/test-download.r
+2c54a48219328c36dcf8cf44576d9a08 *man/download.Rd
 e8d6670ce5c1569ee4165d4043d056df *man/downloader.Rd
 0f771c771f3c673df8f94f351e1a32c6 *man/source_url.Rd
 760b5bb5a5b44be51e89cde3827cb738 *tests/test-all.R
