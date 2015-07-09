@@ -30,14 +30,23 @@
 #' @param ... Other arguments that are passed to \code{\link{source}()}.
 #'
 #' @seealso \code{\link{source}()} for more information on the arguments
-#'   that can be used with this function.
+#'   that can be used with this function. The \code{\link{sha_url}()} function
+#'   can be used to find the SHA-1 hash of a remote file.
 #'
 #' @export
 #' @examples
 #' \dontrun{
 #' # Source the a sample file
-#' downloader::source_url("https://gist.github.com/wch/dae7c106ee99fe1fdfe7/raw/db0c9bfe0de85d15c60b0b9bf22403c0f5e1fb15/test.r",
-#'   sha="9b8ff5213e32a871d6cb95cce0bed35c53307f61")
+#'
+#' # This is a very long URL; break it up so it can be seen more easily in the
+#' # examples.
+#' test_url <- paste0("https://gist.github.com/wch/dae7c106ee99fe1fdfe7",
+#'                    "/raw/db0c9bfe0de85d15c60b0b9bf22403c0f5e1fb15/test.r")
+#' downloader::source_url(test_url,
+#'                        sha = "9b8ff5213e32a871d6cb95cce0bed35c53307f61")
+#'
+#' # Find the hash of a file
+#' downloader::sha_url(test_url)
 #' }
 #'
 #'
